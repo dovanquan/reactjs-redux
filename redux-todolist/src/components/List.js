@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Item from './Item';
 
 class List extends Component {
@@ -6,24 +7,28 @@ class List extends Component {
         super(props);
 
         this.state = {
-           
+
         };
 
         // props.onClickEdit = App.handleEdit
     }
 
     render() {
-        const items   = this.props.items;
-        const elmItem = items.map((item, index)=> {
-            return (
-                <Item 
-                    onClickDelete={this.props.onClickDelete} 
-                    onClickEdit={this.props.onClickEdit} 
-                    key={index} 
-                    item={item} 
-                    index={index} />
-            );
-        });
+        const { items }   = this.props;
+        let elmItem = <tr><th colSpan={4}>Khong co cong viec</th></tr>;
+
+        if (items.length > 0) {
+                elmItem = items.map((item, index)=> {
+                return (
+                    <Item 
+                        onClickDelete={this.props.onClickDelete} 
+                        onClickEdit={this.props.onClickEdit} 
+                        key={index} 
+                        item={item} 
+                        index={index} />
+                );
+            });
+        }
 
         return (
             <div className="panel panel-success">
@@ -44,4 +49,10 @@ class List extends Component {
     }
 }
 
-export default List;
+const mapStateToProps = state => {
+    return {
+        items: state.items
+    }
+}
+
+export default connect(mapStateToProps,null)(List);

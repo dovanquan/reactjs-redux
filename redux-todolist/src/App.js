@@ -3,9 +3,7 @@ import Title from './components/Title';
 import Control from './components/Control';
 import Form from './components/Form';
 import List from './components/List';
-import store from './redux';
 import {filter, includes, orderBy as funcOrderBy, remove, reject } from 'lodash';
-// import tasks from './mocks/tasks';
 
 const uuidv4 = require('uuid/v4');
 
@@ -144,7 +142,6 @@ class App extends Component {
                     onClickSearchGo={this.handleSearh}
                     onClickSort={this.handleSort}
                     onClickAdd={this.handleToggleForm} 
-                    isShowForm={isShowForm}
                 />
                 {/* CONTROL (SEARCH + SORT + ADD) : END */}
 
@@ -156,7 +153,8 @@ class App extends Component {
                 <List 
                     onClickEdit={this.handleEdit}
                     onClickDelete={this.handleDelete}
-                    items={items} />
+                    // items={items}
+                />
                 {/* LIST : END */}
             </div>
         );
