@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {actCloseForm} from './../actions/index';
+import { connect } from 'react-redux';
 
 class Form extends Component {
     constructor(props) {
@@ -57,23 +59,25 @@ class Form extends Component {
     }
 
     handleCancel(){
-        this.props.onClickCancel();
+        this.props.formCancel();
     }
 
     render() {
-        
+        let { isShowForm } = this.props;
+        if (isShowForm === false) return null;
+
         return (
             <div className="row">
                 <div className="col-md-offset-7 col-md-5">
                     <form onSubmit={this.handleSubmit} className="form-inline">
 
                         <div className="form-group">
-                            <label className="sr-only" htmlFor>label</label>
+                            <label className="sr-only" htmlFor="task_name">label</label>
                             <input value={this.state.task_name} onChange={this.handleChange} name="task_name" type="text" className="form-control" placeholder="Task Name" />
                         </div>
 
                         <div className="form-group">
-                            <label className="sr-only" htmlFor>label</label>
+                            <label className="sr-only" htmlFor="task_level">label</label>
                             <select value={this.state.task_level} onChange={this.handleChange}  name="task_level" className="form-control" required="required" >
                         Small
                                 <option value={0}>Small</option>
@@ -90,4 +94,19 @@ class Form extends Component {
     }
 }
 
-export default Form;
+
+const mapStateToProps = state => {
+    return {
+        isShowForm: state.isShowForm
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        formCancel: () => {
+            dispatch(actCloseForm())
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

@@ -1,4 +1,4 @@
-const defaultState = {orderBy:'name', orderDir:'desc'}
+const defaultState = {orderBy:'level', orderDir:'asc'}
 
 const sort = (state = defaultState, action) => {
 	let {orderBy, orderDir} = action;
