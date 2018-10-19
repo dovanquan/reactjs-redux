@@ -13,7 +13,6 @@ class Search extends Component {
         this.handleSearch = this.handleSearch.bind(this);
         this.handleClear = this.handleClear.bind(this);
         this.handleChange = this.handleChange.bind(this);
-
     }
 
     handleSearch(){
@@ -22,7 +21,7 @@ class Search extends Component {
 
     handleClear(){
         this.setState({strSearch: ''});
-        this.props.goSearch(this.state.strSearch);
+        this.props.goSearch('');
     }
 
     handleChange(event){

@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {actOpenForm} from './../actions/index';
+import {actOpenForm, actDeleteItem, actSelectedItem} from './../actions/index';
 
 class Item extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-           
+
         };
         this.handleDelete = this.handleDelete.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
     }
-    
+
     handleEdit(item){
-       // this.props.onClickEdit(item);
-       this.props.editItem();
+       this.props.editItem(item);
     }
 
     handleDelete(id){
-        this.props.onClickDelete(id);
+        this.props.deleteItem(id);
     }
 
     render() {
@@ -34,7 +33,7 @@ class Item extends Component {
                 <td>
                     <button onClick={()=>this.handleEdit(item)}  type="button" className="btn btn-warning">Edit</button>
                     <button onClick={()=>this.handleDelete(item.id)} type="button" className="btn btn-danger">Delete</button>
-                </td>   
+                </td>
             </tr>
         );
     }
@@ -52,8 +51,12 @@ class Item extends Component {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        editItem: () => {
+        editItem: (item) => {
+            dispatch(actSelectedItem(item));
             dispatch(actOpenForm())
+        },
+        deleteItem: (id) => {
+            dispatch(actDeleteItem(id))
         }
     }
 }

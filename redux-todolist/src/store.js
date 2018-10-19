@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 import appReducers from './reducers/index';
-import { actCloseForm, actOpenForm, actToggleForm, actSort } from './actions/index';
+// import { actCloseForm, actOpenForm, actToggleForm, actSort } from './actions/index';
 
 
 
@@ -10,7 +10,6 @@ const store = createStore(
  );
 
 store.subscribe(() => {
-	// console.log(store.getState());
 })
 
 export default store;

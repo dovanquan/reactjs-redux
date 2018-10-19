@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {actToggleForm} from './../actions/index';
+import {actToggleForm, actUnSelectItem} from './../actions/index';
 import { connect } from 'react-redux';
 
 class ToggleForm extends Component {
@@ -10,7 +10,7 @@ class ToggleForm extends Component {
     render() {
         const { isShowForm } = this.props;
         let btnName = (isShowForm === true) ? "Close form" : "Open form";
-        let btnClass = (isShowForm === true) ? "btn-info" : "btn-success";
+        // let btnClass = (isShowForm === true) ? "btn-info" : "btn-success";
 
         return (
             <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
@@ -29,7 +29,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         handleToggle: () => {
-            dispatch(actToggleForm())
+            dispatch(actToggleForm());
+            dispatch(actUnSelectItem());
         }
     }
 }

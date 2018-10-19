@@ -8,7 +8,6 @@ const sort = (state = defaultState, action) => {
 		default:
 			return state;
 	}
-	return state;
 }
 
 export default sort;

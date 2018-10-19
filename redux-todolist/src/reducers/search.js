@@ -9,7 +9,6 @@ const search = (state = defaultState, action) => {
 		default:
 			return state;
 	}
-	return state;
 }
 
 export default search;

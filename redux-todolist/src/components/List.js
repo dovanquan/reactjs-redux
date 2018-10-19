@@ -4,18 +4,8 @@ import Item from './Item';
 import {filter, includes, orderBy as funcOrderBy } from 'lodash';
 
 class List extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-
-        };
-
-        // props.onClickEdit = App.handleEdit
-    }
-
     render() {
-        let { items, search, sort }   = this.props;
+        let { items, search, sort } = this.props;
         let { orderBy, orderDir }   = sort;
         let itemsOrigin = (items !== null) ? [...items] : [];
 
@@ -27,16 +17,10 @@ class List extends Component {
         items = funcOrderBy(items, [orderBy], [orderDir]);
 
         let elmItem = <tr><th colSpan={4}>Khong co cong viec</th></tr>;
-
         if (items.length > 0) {
                 elmItem = items.map((item, index)=> {
                 return (
-                    <Item 
-                        onClickDelete={this.props.onClickDelete} 
-                        onClickEdit={this.props.onClickEdit} 
-                        key={index} 
-                        item={item} 
-                        index={index} />
+                    <Item key={index} item={item} index={index} />
                 );
             });
         }

@@ -18,6 +18,13 @@ export const actToggleForm = () => {
 	}
 }
 
+export const actSubmitForm = (item) => {
+	return {
+		type: types.SUBMIT_FORM,
+		item
+	}
+}
+
 export const actSort = (orderBy, orderDir) => {
 	return {
 		type: types.SORT_ITEM,
@@ -30,5 +37,25 @@ export const actSearch = (search) => {
 	return {
 		type: types.CHANGE_SEARCH,
 		search
+	}
+}
+
+export const actDeleteItem = (id) => {
+	return {
+		type: types.DELETE_ITEM,
+		id
+	}
+}
+
+export const actSelectedItem = (item) => {
+	return {
+		type: types.SELECT_ITEM,
+		item
+	}
+}
+
+export const actUnSelectItem = () => {
+	return {
+		type: types.UNSELECT_ITEM
 	}
 }
